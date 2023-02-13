@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    BG REMOVE
+{% endblock title %}
+
+{% block content %}
+{% comment %} <form method="post" enctype="multipart/form-data">
+    <div>
+      <label for="profile_pic">Choose file to upload</label>
+      <input
+        type="file"
+        id="profile_pic"
+        name="profile_pic"
+        accept=".jpg, .jpeg, .png" />
+    </div>
+    <div>
+      <button>Submit</button>
+    </div>
+  </form> {% endcomment %}
+{% comment %} <form method="POST" action="upload/" class="dropzone dz" enctype="multipart/form-data" id="my-dropzone">
+    {% csrf_token %}
+      <input id="files" type="file" name="files" accept=".jpeg"/>
+</form> {% endcomment %}
+
+<form method="POST" action="upload/" id="my-dropzone" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input id="files" type="file" name="files" accept=".png, .jpg, .jpeg"/>
+</form>
+
+{% comment %} <form method="POST" enctype="multipart/form-data" id="upload-file">
+    {% csrf_token %}
+    <button type="button" class="btn btn-info" onclick="ajaks()">Dönüştür</button>
+    <button class="uploadbtn">Yükle</button>
+    
+    <div class="text-center">
+      <div class="container quote-imgs-thumbs quote-imgs-thumbs--hidden" id="result" aria-live="polite">
+      </div>
+    </div>
+</form> {% endcomment %}
+{% comment %} </form> {% endcomment %}
+
+{% comment %} <form method="POST" action="upload/" id="my-dropzone" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input id="files" type="file" name="files" accept=".png, .jpg, .jpeg"/>
+</form> {% endcomment %}
+<div class="text-center">
+  <div class="container quote-imgs-thumbs quote-imgs-thumbs--hidden" id="result" aria-live="polite">
+  <button type="button" class="btn btn-info" id="sil">Dönüştür</button>
+  </div>
+</div>
+
+
+{% endblock content %}
