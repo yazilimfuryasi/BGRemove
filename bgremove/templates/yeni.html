@@ -5,50 +5,66 @@
 {% endblock title %}
 
 {% block content %}
-{% comment %} <form method="post" enctype="multipart/form-data">
-    <div>
-      <label for="profile_pic">Choose file to upload</label>
-      <input
-        type="file"
-        id="profile_pic"
-        name="profile_pic"
-        accept=".jpg, .jpeg, .png" />
-    </div>
-    <div>
-      <button>Submit</button>
-    </div>
-  </form> {% endcomment %}
-{% comment %} <form method="POST" action="upload/" class="dropzone dz" enctype="multipart/form-data" id="my-dropzone">
-    {% csrf_token %}
-      <input id="files" type="file" name="files" accept=".jpeg"/>
-</form> {% endcomment %}
 
-<form method="POST" action="upload/" id="my-dropzone" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input id="files" type="file" name="files" accept=".png, .jpg, .jpeg"/>
-</form>
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">RBG (Remove Background)</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
 
-{% comment %} <form method="POST" enctype="multipart/form-data" id="upload-file">
-    {% csrf_token %}
-    <button type="button" class="btn btn-info" onclick="ajaks()">Dönüştür</button>
-    <button class="uploadbtn">Yükle</button>
-    
-    <div class="text-center">
-      <div class="container quote-imgs-thumbs quote-imgs-thumbs--hidden" id="result" aria-live="polite">
-      </div>
+<div class="container d-flex justify-content-center" style="margin-top: 50px;">
+  <div class="row">
+    <div class="col-lg-6 col-sm-6 text-center">
+      <h1>Arka Planı Kaldırmak İçin Bir Resim Yükleyin</h1>
     </div>
-</form> {% endcomment %}
-{% comment %} </form> {% endcomment %}
-
-{% comment %} <form method="POST" action="upload/" id="my-dropzone" enctype="multipart/form-data">
-  {% csrf_token %}
-  <input id="files" type="file" name="files" accept=".png, .jpg, .jpeg"/>
-</form> {% endcomment %}
-<div class="text-center">
-  <div class="container quote-imgs-thumbs quote-imgs-thumbs--hidden" id="result" aria-live="polite">
-  <button type="button" class="btn btn-info" id="sil">Dönüştür</button>
+    <div class="col-5">
+      <form method="POST" action="upload/" id="my-dropzone" enctype="multipart/form-data">
+          {% csrf_token %}
+          <label for="files" class="drop-container">
+            <span class="drop-title">Resim Yüklemek İçin Tıkla</span>
+          <input hidden id="files" type="file" name="files" accept=".png, .jpg, .jpeg" required />
+          </label>
+      </form>
+    </div>
   </div>
 </div>
 
+{% comment %} <div class="text-center">
+  <div class="container quote-imgs-thumbs quote-imgs-thumbs--hidden" id="result" aria-live="polite">
+    <button type="button" class="btn btn-info" id="sil">Dönüştür</button>
+  </div>
+</div> {% endcomment %}
 
+<div class="container d-flex justify-content-center align-items-center" id="ana" style="margin-top: 40px;">
+  <div class="row">
+    <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation" style="display: none;" id="li_eski">
+        <button class="nav-link" id="eski_t" data-bs-toggle="pill" data-bs-target="#eski" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Orijinal</button>
+      </li>
+      <li class="nav-item" role="presentation" id="li_yeni" style="display: none;">
+        <button class="nav-link active" id="yeni_t" data-bs-toggle="pill" data-bs-target="#yeni" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Yeni</button>
+      </li>
+    </ul>
+    <div class="tab-content d-flex justify-content-center">
+      <div class="tab-pane fade show active" id="eski" role="tabpanel" aria-labelledby="eski_t" tabindex="0"></div>
+      <div class="tab-pane fade" id="yeni" role="tabpanel" aria-labelledby="yeni_t" tabindex="0"></div>
+    </div>
+    <div class="row" id="butonlar" style="display: none;">
+      <div class="d-flex justify-content-center align-items-center" id="addbutton" style="margin-top: 10px;">
+        <button type="button" class="btn btn-danger" id="sil" style="margin-right: 10px;">Dönüştür</button>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="container">
+  <footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+    </ul>
+    <p class="text-center  text-dark">&copy; 2023 | Enes HAZIR</p>
+  </footer>
+</div>
 {% endblock content %}
